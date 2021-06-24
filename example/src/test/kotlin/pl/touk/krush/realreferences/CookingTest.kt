@@ -33,17 +33,17 @@ class CookingTest : BaseDatabaseTest() {
                     table = MealPlanTable,
                     otherTable = RecipeTable,
                     joinType = JoinType.LEFT,
-                    onColumn = MealPlanTable.recipe,
+                    onColumn = MealPlanTable.recipeId,
                     otherColumn = RecipeTable.id
             ).join(
                     otherTable = RecipeIngredientsTable,
                     joinType = JoinType.LEFT,
                     onColumn = RecipeTable.id,
-                    otherColumn = RecipeIngredientsTable.recipeSourceId
+                    otherColumn = RecipeIngredientsTable.recipeId
             ).join(
                     otherTable = IngredientTable,
                     joinType = JoinType.LEFT,
-                    onColumn = RecipeIngredientsTable.ingredientTargetId,
+                    onColumn = RecipeIngredientsTable.ingredientId,
                     otherColumn = IngredientTable.id
             ).selectAll().toMealPlanList().first()
 
